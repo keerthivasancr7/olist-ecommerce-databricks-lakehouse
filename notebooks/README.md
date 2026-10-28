@@ -1,23 +1,17 @@
-# Databricks notebooks
+# Original Databricks notebooks
 
-The seven existing notebooks numbered 07–13 are pending export. No notebook source has been uploaded or generated.
+All seven notebooks were manually exported from the existing Databricks workspace and supplied on 28 October 2026. The source files are preserved unchanged, including notebook headers and cell delimiters.
 
-| Number | Exact filename | Status |
+| Sequence | Source | Purpose |
 | --- | --- | --- |
-| 07 | Awaiting export | Pending |
-| 08 | Awaiting export | Pending |
-| 09 | Awaiting export | Pending |
-| 10 | Awaiting export | Pending |
-| 11 | Awaiting export | Pending |
-| 12 | Awaiting export | Pending |
-| 13 | Awaiting export | Pending |
+| 07 | [07_olist_bronze_ingestion.py](07_olist_bronze_ingestion.py) | Full bronze ingestion from existing raw tables |
+| 08 | [08_olist_silver_transformation.py](08_olist_silver_transformation.py) | Silver filtering and deduplication |
+| 09 | [09_olist_relationship_validation.py](09_olist_relationship_validation.py) | Relationship and order-key assertions |
+| 10 | [10_olist_gold_dimensional_model.py](10_olist_gold_dimensional_model.py) | Customer dimension and order-item fact |
+| 11 | [11_olist_gold_business_analytics.py](11_olist_gold_business_analytics.py) | Monthly/state sales and order statuses |
+| 12 | [12_olist_gold_reconciliation.py](12_olist_gold_reconciliation.py) | Merchandise totals and status counts |
+| 13 | [13_olist_incremental_loading.py](13_olist_incremental_loading.py) | Separate subset MERGE demonstration |
 
-## Export handoff
+Run 07–12 in order after preparing the required raw tables. Notebook 13 depends on silver orders from 08 and may run separately after that step. All cells within each notebook must execute in order.
 
-Databricks displayed: “Automated browser control detected. The Databricks console doesn’t support automated browser control. Continue manually, or connect your agent through Genie One MCP.”
-
-With the current connection, export must be performed manually. Use Databricks export/download controls to export the actual notebooks as source files or Jupyter notebooks. Preserve existing filenames and cell boundaries. A ZIP containing all seven exports is suitable for handoff.
-
-Before publishing, review exports for credentials and private outputs. Record any necessary redactions. Do not replace missing source with generated implementations.
-
-After export, confirm exactly seven notebooks covering 07–13, inspect inputs/outputs and dependencies, upload source here, replace this inventory with actual file links, and update the root README and reproduction guide.
+Python syntax was checked locally; Databricks execution was not repeated. See [setup and limitations](../docs/reproduction.md) and the [root README](../README.md).
